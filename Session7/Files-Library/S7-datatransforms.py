@@ -30,7 +30,7 @@ class Transforms:
              transforms_list = [transforms.ToTensor()]
              
            if (self.normalize):
-              transforms_list.append(traansforms.Normalize(self.mean,self.stdev))
+              transforms_list.append(transforms.Normalize(self.mean,self.stdev))
            
            if after_norm:
                transforms_list.extend(after_norm)

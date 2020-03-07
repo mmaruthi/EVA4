@@ -17,12 +17,12 @@ class Net(nn.module):
         
         ## C1 ## 
         Self.convblock1  = nn.sequential(
-            nn.conv2d(in_channels = 3, out_channels = 16 , kernel_size =(3,3), padding = 0 , bias = False)
+            nn.conv2d(in_channels = 3, out_channels = 16 , kernel_size =(3,3), padding = 1 , bias = False)
             nn.ReLU(),
             nn.BatchNorm2d(16),
             nn.Dropout(dropout_value)    
         
-        # Input - 32*32 , Output - 30*30 , RF = 3 
+        # Input - 32*32 , Output - 32*32 , RF = 3 
         
         self.convblock2  = nn.sequential(
             nn.conv2d(in_channels = 16, out_channels = 32 , kernel_size = (3,3), padding = 1 , bias = False)
@@ -30,15 +30,15 @@ class Net(nn.module):
             nn.BatchNorm2d(32),
             nn.Dropout(droupout_value) 
           
-         # Input - 30 * 30 , Output - 30 * 30 , RF = 5 
+         # Input - 32 * 32 , Output - 32 * 32 , RF = 5 
          
          self.convblock3 = nn.sequential(
-             nn.conv2d(in_channels = 32 , out_channels = 32 , kernel_size = (3,3), padding =2 , bias = False)
+             nn.conv2d(in_channels = 32 , out_channels = 32 , kernel_size = (3,3), padding =1 , bias = False)
              nn.ReLU(),
              nn.BacthNorm2d(32),
              nn.Dropout(dropout_value)
              
-         # Input - 30*30 , output - 32*32 , RF = 7
+         # Input - 32*32 , output - 32*32 , RF = 7
          
          ## First Max pool block## 
          self.pool1   = nn.Maxpool2d(2,2)
@@ -57,6 +57,13 @@ class Net(nn.module):
          # Input - 14*14 , Output - 7*7 , RF = 18 
          
          ## C3 ##  -- Use Depth wise seperable 
+         self.convblock5 = nn.sequential(
+             nn.conv2d(in_channels = 32 , out_channels = 32 , kernel_size = (3,3), padding =1 ,bias = False)
+             nn.ReLU(),
+             nn.BacthNorm2d(32),
+             nn.Dropout(dropout_value)
+         # Input - 16*16 , output - 14*14 , RF = 16 
+         
          
             
       

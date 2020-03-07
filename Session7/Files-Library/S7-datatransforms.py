@@ -4,9 +4,9 @@ from torchvision import transforms
 class Transforms_custom:
       def __init__(self,normalize=False, mean=None, stdev=None):
       
-      self.normalize = normalize
-      self.mean      = mean      ## Make sure you pass the meand and stdev whenever normalization is set to true 
-      self.stdev     = stdev
+        self.normalize = normalize
+        self.mean      = mean      ## Make sure you pass the meand and stdev whenever normalization is set to true 
+        self.stdev     = stdev
       
       
       # Define a method for test data set as it does not need extra transformations.

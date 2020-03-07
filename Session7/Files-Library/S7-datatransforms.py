@@ -1,7 +1,7 @@
 from torchvision import transforms
 
 # # class for Transformations ## 
-class Transforms:
+class Transforms_custom:
       def __init__(self,normalize=False, mean=None, stdev=None):
       
       self.normalize = normalize
@@ -21,6 +21,7 @@ class Transforms:
       # Define a method for train data . It can have multiple transformations other than changing to tensor and normalizing
       # so create your lists accordingly . One for before converting to tensor and normalization 
       # one for after converting it to tensor and normalization
+      
       
       def train_transforms(self , before_norm=None, after_norm=None):
           if before_norm:
